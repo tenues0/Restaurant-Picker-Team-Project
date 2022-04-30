@@ -36,32 +36,14 @@ function getLocationResults(e) {
         })
 }
 
+function selectLocationFunction(e) {
+    e.preventDefault();
+    JSON.parse(window.localStorage.getItem("something to specify chosen location"))
 
-// function getLocationResults(e) {
-//     e.preventDefault();
-//     var searchRequest = searchQueryTwo.val();
-//     var apiURL = 'https://www.mapquestapi.com/search/v4/place?sort=relevance&feedback=false&key=kjB9lPrpbc0GrGOIyTCQIBKimoouOGE1&q=' + searchRequest;
-//     fetch(apiURL)
-//         .then(function (response) {
-//             return response.json();
-//         })
-//         .then(function (data) {
-//             console.log(data);
-//         })
-// }
-// }
-// fetch(apiURL)
-//     .then(function (response) {
-//             response.json().then(function (data))
+    fetch("https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=" & limit = 10 & categories = parks, beaches & location = " + searchRequest, requestOptions)
 
+    }
 
-//     if (searchRequest) {
-//         getLocation(searchRequest);
+    searchForm.on('submit', getLocationResults);
 
-//     }
-//     console.log(searchRequest);
-// }
-
-
-
-searchForm.on('submit', getLocationResults);
+    selectLocation.on('click', selectLocationFunction);
