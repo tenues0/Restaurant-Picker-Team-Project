@@ -25,31 +25,4 @@ function getLocationResults(e) {
 }
 
 
-// function getLocationResults(e) {
-//     e.preventDefault();
-//     var searchRequest = searchQueryTwo.val();
-//     var apiURL = 'https://www.mapquestapi.com/search/v4/place?sort=relevance&feedback=false&key=kjB9lPrpbc0GrGOIyTCQIBKimoouOGE1&q=' + searchRequest;
-//     fetch(apiURL)
-//         .then(function (response) {
-//             return response.json();
-//         })
-//         .then(function (data) {
-//             console.log(data);
-//         })
-// }
-// }
-// fetch(apiURL)
-//     .then(function (response) {
-//             response.json().then(function (data))
-
-
-//     if (searchRequest) {
-//         getLocation(searchRequest);
-
-//     }
-//     console.log(searchRequest);
-// }
-
-
-
 searchForm.on('submit', getLocationResults);
