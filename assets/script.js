@@ -18,11 +18,50 @@ function getLocationResults(e) {
         redirect: 'follow'
     };
 
-    fetch("https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=" + searchRequest + "&limit=10&location=92111", requestOptions)
-        .then(response => response.json())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+    fetch("https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?&limit=10&categories=parks,beaches&location=" + searchRequest, requestOptions)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            data.businesses.forEach(function (item) {
+                    const searchResult = {
+                        name: item.name,
+                        address: item.location.address1,
+                        picture: item.image_url,
+                    }
+                    localStorage.setItem(item.name, JSON.stringify(searchResult));
+                })
+                .catch(error => console.log('error', error));
+        })
 }
+
+
+// function getLocationResults(e) {
+//     e.preventDefault();
+//     var searchRequest = searchQueryTwo.val();
+//     var apiURL = 'https://www.mapquestapi.com/search/v4/place?sort=relevance&feedback=false&key=kjB9lPrpbc0GrGOIyTCQIBKimoouOGE1&q=' + searchRequest;
+//     fetch(apiURL)
+//         .then(function (response) {
+//             return response.json();
+//         })
+//         .then(function (data) {
+//             console.log(data);
+//         })
+// }
+// }
+// fetch(apiURL)
+//     .then(function (response) {
+//             response.json().then(function (data))
+
+
+//     if (searchRequest) {
+//         getLocation(searchRequest);
+
+//     }
+//     console.log(searchRequest);
+// }
+
 
 
 searchForm.on('submit', getLocationResults);
