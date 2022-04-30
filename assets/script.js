@@ -36,14 +36,14 @@ function getLocationResults(e) {
         })
 }
 
-function selectLocationFunction(e) {
-    e.preventDefault();
-    JSON.parse(window.localStorage.getItem("something to specify chosen location"))
+// function selectLocationFunction(e) {
+//     e.preventDefault();
+//     JSON.parse(window.localStorage.getItem("something to specify chosen location"))
 
-    fetch("https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=" & limit = 10 & categories = parks, beaches & location = " + searchRequest, requestOptions)
+//     fetch("https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=" & limit = 10 & categories = parks, beaches & location = " + searchRequest, requestOptions)
 
-    }
+//     }
 
-    searchForm.on('submit', getLocationResults);
+searchForm.on('submit', getLocationResults);
 
-    selectLocation.on('click', selectLocationFunction);
+selectLocation.on('click', selectLocationFunction);
