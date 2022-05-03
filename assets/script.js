@@ -7,7 +7,7 @@ var apiKey = "gJVmTi7vwWY--jKnwBsPJdLiPDsil3tcQzGmNEpsaoBkFKdkMwmTdiB_RCkLqnrExN
 var dogFactEl = document.getElementById("#dog-fact");
 
 // IN PROGRESS - DANIEL
-function addAddressInformationToPage () {
+function addAddressInformationToPage() {
 
 }
 
@@ -32,15 +32,6 @@ function getLocationResults(e) {
         .then(function (data) {
             console.log(data);
             var i = 0;
-
-            // for (let index = 0; index < data.businesses.length; index++) {
-            //     const searchResult = {
-            //                     name: item.name,
-            //                     address: item.location.address1,
-            //                     picture: item.image_url,
-            //                 }
-
-            //     localStorage.setItem("Result" + [index], JSON.stringify(searchResult))
 
             data.businesses.forEach(function (item) {
                     const searchResult = {
@@ -93,24 +84,24 @@ searchForm.on('submit', getLocationResults);
 // var url = "http://dog-api.kinduff.com";
 function fetchDogFact() {
 
-var dogFactUrl = 'https://cors-anywhere.herokuapp.com/http://dog-api.kinduff.com/api/facts';
-fetch(dogFactUrl)
-    
-    .then(response => {
-    console.log(response);
-    return response.json(); 
-    
-    }).then(function(data) {
-    console.log("data", data);
+    var dogFactUrl = 'https://cors-anywhere.herokuapp.com/http://dog-api.kinduff.com/api/facts';
+    fetch(dogFactUrl)
 
-    var dogFactAPIData = data.facts;
-    var dogFactData = `<p>${dogFactAPIData}</p>`;
+        .then(response => {
+            console.log(response);
+            return response.json();
 
-    $('#dog-fact').append(dogFactData);
+        }).then(function (data) {
+            console.log("data", data);
+
+            var dogFactAPIData = data.facts;
+            var dogFactData = `<p>${dogFactAPIData}</p>`;
+
+            $('#dogFactDisplay').append(dogFactData);
 
 
-    })
-.catch(error => console.log('error', error));
+        })
+        .catch(error => console.log('error', error));
 }
 
 $(document).ready(fetchDogFact);
@@ -118,23 +109,22 @@ $(document).ready(fetchDogFact);
 
 //DANIEL ADDING API SCRIPT TO FETCH Random Dog Picture
 //On page load trigger the API
- function addRandomImage(message) {
-     var imageURL = message;
-     console.log(imageURL);
-     $("#randomDogHeaderImage").attr("src", imageURL);
- }
+function addRandomImage(message) {
+    var imageURL = message;
+    console.log(imageURL);
+    $("#randomDogHeaderImage").attr("src", imageURL);
+}
 
- function fetchDogPicture() {
-     var fetchDogPictureEndpoint = "https://dog.ceo/api/breeds/image/random"; 
-     fetch(fetchDogPictureEndpoint, {
-     }).then(response => {
-         return response.json();
-     }).then(function(data){
-         console.log(data);
-         console.log(data.message);
-         addRandomImage(data.message);
-     }).catch(error => 
-         console.log("error", error));
+function fetchDogPicture() {
+    var fetchDogPictureEndpoint = "https://dog.ceo/api/breeds/image/random";
+    fetch(fetchDogPictureEndpoint, {}).then(response => {
+        return response.json();
+    }).then(function (data) {
+        console.log(data);
+        console.log(data.message);
+        addRandomImage(data.message);
+    }).catch(error =>
+        console.log("error", error));
 }
 
 $(document).ready(fetchDogPicture);
@@ -142,7 +132,7 @@ $(document).ready(fetchDogPicture);
 //ENDING RANDOM DOG PICTURE SCRIPT
 
 
-function hideStarterElements () {
+function hideStarterElements() {
     $("#foodSearchParameters").addClass("hideContainer");
     $("#randomDogHeaderImage").addClass("hideContainer");
 }
