@@ -4,6 +4,10 @@ var searchBtn = $('.searchBtn');
 var searchQueryTwo = $('#search-place');
 var apiKey = "gJVmTi7vwWY--jKnwBsPJdLiPDsil3tcQzGmNEpsaoBkFKdkMwmTdiB_RCkLqnrExNMK-VW2twwvYqNssc1H8r25mJE0L-ZTnpq2xSa88h65tb8IzboCX_C1UHFrYnYx"
 
+function addAddressInformationToPage () {
+
+}
+
 function getLocationResults(e) {
     e.preventDefault();
 
@@ -53,34 +57,33 @@ searchForm.on('submit', getLocationResults);
 //CODE BELOW CAN BE USED TO GENERATE RANDOM PICTURE
 //CURRENTLY SET TO MODIFY HOMEPAGE BANNER IMAGE, WILL
 //NEED TO UPDATE IF WE WANT TO USE ELSEWHERE
+ function addRandomImage(message) {
+     var imageURL = message;
+     console.log(imageURL);
+     $("#randomDogHeaderImage").attr("src", imageURL);
+ }
 
-// function addRandomImage(message) {
-//     var imageURL = message;
-//     console.log(imageURL);
-//     $("#dogHeaderImage").attr("src", imageURL);
-// }
-
-// function fetchDogPicture() {
-//     var fetchDogPictureEndpoint = "https://dog.ceo/api/breeds/image/random"; 
-//     fetch(fetchDogPictureEndpoint, {
-//     }).then(response => {
-//         return response.json();
-//     }).then(function(data){
-//         console.log(data);
-//         console.log(data.message);
-//         addRandomImage(data.message);
-//     }).catch(error => 
-//         console.log("error", error));
-// }
-function fetchDogPicture() {
-    var fetchDogPictureEndpoint = "https://dog.ceo/api/breeds/image/random"; 
-    fetch(fetchDogPictureEndpoint, {
-    }).then(response => {
-        console.log(response);
-    }).catch(error => 
-        console.log("error", error));
+ function fetchDogPicture() {
+     var fetchDogPictureEndpoint = "https://dog.ceo/api/breeds/image/random"; 
+     fetch(fetchDogPictureEndpoint, {
+     }).then(response => {
+         return response.json();
+     }).then(function(data){
+         console.log(data);
+         console.log(data.message);
+         addRandomImage(data.message);
+     }).catch(error => 
+         console.log("error", error));
 }
 
-$(document).ready(fetchDogPicture)
+$(document).ready(fetchDogPicture);
 
 //ENDING RANDOM DOG PICTURE SCRIPT
+
+
+function hideStarterElements () {
+    $("#foodSearchParameters").addClass("hideContainer");
+    $("#randomDogHeaderImage").addClass("hideContainer");
+}
+$(document).ready(hideStarterElements);
+
