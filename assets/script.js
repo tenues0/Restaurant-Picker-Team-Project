@@ -1,13 +1,14 @@
 var searchForm = $('#search-form');
 var searchBtn = $('.searchBtn');
 // var searchQuery = ('#search-place');
-var searchQueryTwo = $('.form-input');
+var searchQueryPlace = $('.form-inputPlace');
+var searchQueryFood = $('.form-inputFood')
 var apiKey = "gJVmTi7vwWY--jKnwBsPJdLiPDsil3tcQzGmNEpsaoBkFKdkMwmTdiB_RCkLqnrExNMK-VW2twwvYqNssc1H8r25mJE0L-ZTnpq2xSa88h65tb8IzboCX_C1UHFrYnYx"
 
 function getLocationResults(e) {
     e.preventDefault();
 
-    var searchRequest = searchQueryTwo.val()
+    var searchRequest = searchQueryPlace.val()
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + apiKey);
     console.log(searchRequest);
@@ -24,17 +25,49 @@ function getLocationResults(e) {
         })
         .then(function (data) {
             console.log(data);
-            $i = 0;
+            var i = 0;
+
+            // for (let index = 0; index < data.businesses.length; index++) {
+            //     const searchResult = {
+            //                     name: item.name,
+            //                     address: item.location.address1,
+            //                     picture: item.image_url,
+            //                 }
+
+            //     localStorage.setItem("Result" + [index], JSON.stringify(searchResult))
+
             data.businesses.forEach(function (item) {
                     const searchResult = {
                         name: item.name,
                         address: item.location.address1,
                         picture: item.image_url,
                     }
-                    localStorage.setItem(item.name, JSON.stringify(searchResult));
+                    localStorage.setItem("result" + [i], JSON.stringify(searchResult));
+                    i++;
                 })
                 .catch(error => console.log('error', error));
         })
+}
+
+function getRestaurant(selectionLocation) {
+    var foodRequest = searchQueryPlace.val()
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + apiKey);
+
+    var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+    };
+
+    fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?=&${foodRequest}limit=10&location=${selectionLocation}`, requestOptions)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data)
+        })
+
 }
 
 // function selectLocationFunction(e) {
@@ -47,6 +80,7 @@ function getLocationResults(e) {
 
 
 searchForm.on('submit', getLocationResults);
+
 
 // //random dog fact API
 // var dogFactEl = document.querySelector("#dog-fact");

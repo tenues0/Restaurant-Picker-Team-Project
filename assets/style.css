@@ -1,7 +1,7 @@
 .title {
-    text-align: center;
-    font-weight: bold;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .homepageTitle {
@@ -12,12 +12,11 @@
 }
 
 .bannerImageContainer {
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   margin: 20px;
 }
-
 
 #dogHeaderImage {
   width: 1000px;
@@ -25,52 +24,64 @@
   object-fit: contain;
 }
 
-
 .container {
-    background-color: gray;
-    padding: 3rem;
-    border-radius: 1rem;
-    border: 2px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
+  background-color: gray;
+  padding: 3rem;
+  border-radius: 1rem;
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
 #text-primary {
-    font-size: larger;
-    color: white;
+  font-size: larger;
+  color: white;
 }
 
 .btn {
-    grid-column: span 2;
-    background-color: black;
-    border: 2px solid white;
-    color: white;
-    padding: .5rem 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 1rem;
-  }
-  
-  .btn:hover {
-    background-color: #bbbbbb;
-    color: white;
-  }
+  grid-column: span 2;
+  background-color: black;
+  border: 2px solid white;
+  color: white;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 1rem;
+  justify-self: center;
+  margin-left: 5px;
+}
 
-  .foodInputContainer {
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-  }
+.btn:hover {
+  background-color: #bbbbbb;
+  color: white;
+}
 
-  .foodInputContentContainer {
-    width: 58%;
-    background-color: gray;
-    border-radius: 5px;
-    border-style: solid;
-    border-color: black;
-    padding: 40px;
-  }
+.foodInputContainer {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+.foodInputContentContainer {
+  width: 58%;
+  background-color: gray;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: black;
+  padding: 40px;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.searchBar {
+  border: 1px solid black;
+  margin: 2px;
+}
