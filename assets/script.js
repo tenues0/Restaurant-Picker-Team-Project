@@ -72,6 +72,14 @@ searchForm.on('submit', getLocationResults);
 //     }).catch(error => 
 //         console.log("error", error));
 // }
+function fetchDogPicture() {
+    var fetchDogPictureEndpoint = "https://dog.ceo/api/breeds/image/random"; 
+    fetch(fetchDogPictureEndpoint, {
+    }).then(response => {
+        console.log(response);
+    }).catch(error => 
+        console.log("error", error));
+}
 
 $(document).ready(fetchDogPicture)
 
