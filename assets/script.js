@@ -66,3 +66,19 @@ fetch('http://dog-api.kinduff.com/api/facts?number=5', {
 //e.data.forEach(item => {
 // dogFactEl.innerHTML += item.
 //})
+
+
+//DANIEL ADDING API SCRIPT TO FETCH Random Dog Picture
+//On page load trigger the API
+
+function fetchDogPicture() {
+    var fetchDogPictureEndpoint = "https://dog.ceo/api/breeds/image/random";
+    fetch(fetchDogPictureEndpoint, {}).then(response => {
+        console.log(response);
+    }).catch(error =>
+        console.log("error", error));
+}
+
+$(document).ready(fetchDogPicture)
+
+//ENDING RANDOM DOG PICTURE SCRIPT
