@@ -42,7 +42,6 @@
       </container>
 
       <!--Random dog fact goes here-->
-      <div id="dog-fact"></div>
 
       <!--we can insert <div> and class here for search form-->
 
@@ -63,121 +62,100 @@
           />
           <button type="submit" class="btn">Search</button>
         </form>
-      </div>
 
-      <!--Creating separate form to consume user input, what price tier would they like, rating, etc... -->
-      <container class="foodInputContainer">
-        <container class="foodInputContentContainer">
-          <form>
-            <div>
-              <h3>What type of price level are you looking for?</h3>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="priceOption1"
-                  value="priceCheckbox1"
-                />
-                <label class="form-check-label" for="inlineCheckbox1"
-                  >&#36;</label
-                >
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="priceOption2"
-                  value="priceCheckbox2"
-                />
-                <label class="form-check-label" for="inlineCheckbox2"
-                  >&#36;&#36;</label
-                >
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="priceOption3"
-                  value="priceCheckbox3"
-                />
-                <label class="form-check-label" for="inlineCheckbox3"
-                  >&#36;&#36;&#36;</label
-                >
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="priceOption4"
-                  value="priceCheckbox4"
-                />
-                <label class="form-check-label" for="inlineCheckbox3"
-                  >&#36;&#36;&#36;&#36;</label
-                >
-              </div>
-              <h3>Please choose a rating!</h3>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="ratingOption1"
-                  value="ratingCheckbox1"
-                />
-                <label class="form-check-label" for="inlineCheckbox1"
-                  >&#11088;
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="ratingOption2"
-                  value="ratingCheckbox2"
-                />
-                <label class="form-check-label" for="inlineCheckbox2"
-                  >&#11088;&#11088;
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="ratingOption3"
-                  value="ratingCheckbox3"
-                />
-                <label class="form-check-label" for="inlineCheckbox3"
-                  >&#11088;&#11088;&#11088;</label
-                >
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="ratingOption4"
-                  value="ratingCheckbox4"
-                />
-                <label class="form-check-label" for="inlineCheckbox3"
-                  >&#11088;&#11088;&#11088;&#11088;</label
-                >
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="ratingOption5"
-                  value="ratingCheckbox5"
-                />
-                <label class="form-check-label" for="inlineCheckbox3"
-                  >&#11088;&#11088;&#11088;&#11088;&#11088;</label
-                >
-              </div>
+      <div class="container">
+      <div class="waviy" id="dog-fact">
+        <span style="--i:1">R</span>
+        <span style="--i:2">A</span>
+        <span style="--i:3">N</span>
+        <span style="--i:4">D</span>
+        <span style="--i:5">O</span>
+        <span style="--i:6">M</span>
+        <span style="--i:7">🦮</span>
+        <span style="--i:8">D</span>
+        <span style="--i:9">O</span>
+        <span style="--i:10">G</span>
+        <span style="--i:11">🐕‍🦺</span>
+        <span style="--i:12">F</span>
+        <span style="--i:13">A</span>
+        <span style="--i:14">C</span>
+        <span style="--i:15">T</span>
+        <span style="--i:16">🐩</span>
+        <span style="--i:17">:</span>
+       </div>
+
+      </div>
+      <!--we can insert <div> and class here for search form-->
+
+        <!--Creating separate form to consume user input, what price tier would they like, rating, etc... 
+        Form should only be displayed to the user when the user has selected an address.-->
+        <container id="foodSearchParameters" class="container">
+          <container class="container">
+            <form>
+              <div>
+                <h3>What type of price level are you looking for?</h3>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="priceOption1" value="priceCheckbox1">
+                  <label class="form-check-label" for="inlineCheckbox1">&#36;</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="priceOption2" value="priceCheckbox2">
+                  <label class="form-check-label" for="inlineCheckbox2">&#36;&#36;</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="priceOption3" value="priceCheckbox3">
+                  <label class="form-check-label" for="inlineCheckbox3">&#36;&#36;&#36;</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="priceOption4" value="priceCheckbox4">
+                  <label class="form-check-label" for="inlineCheckbox3">&#36;&#36;&#36;&#36;</label>
+                </div>
+                <h3>Please choose a rating!</h3>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="ratingOption1" value="ratingCheckbox1">
+                  <label class="form-check-label" for="inlineCheckbox1">&#11088;	
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="ratingOption2" value="ratingCheckbox2">
+                  <label class="form-check-label" for="inlineCheckbox2">&#11088;&#11088;
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="ratingOption3" value="ratingCheckbox3">
+                  <label class="form-check-label" for="inlineCheckbox3">&#11088;&#11088;&#11088;</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="ratingOption4" value="ratingCheckbox4">
+                  <label class="form-check-label" for="inlineCheckbox3">&#11088;&#11088;&#11088;&#11088;</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="ratingOption5" value="ratingCheckbox5">
+                  <label class="form-check-label" for="inlineCheckbox3">&#11088;&#11088;&#11088;&#11088;&#11088;</label>
+                </div>
             </div>
           </form>
         </container>
       </container>
-    </main>
 
-    <!--javascript-->
+      <!--End of food options container-->
+
+      <!--Beginning of parks information-->
+      <container class="bannerImageContainer">
+        <div class="jumbotron">
+          <img
+            id="randomDogHeaderImage"
+            class="jim img-fluid"
+            src=""
+            alt="Random doggy picture!"
+          />
+        </div>
+    </container>
+      <!--End of parks information-->
+
+  </main>
+ 
+  <!--javascript-->
     <script src="./assets/script.js"></script>
   </body>
 </html>

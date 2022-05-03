@@ -4,6 +4,12 @@ var searchBtn = $('.searchBtn');
 var searchQueryPlace = $('.form-inputPlace');
 var searchQueryFood = $('.form-inputFood')
 var apiKey = "gJVmTi7vwWY--jKnwBsPJdLiPDsil3tcQzGmNEpsaoBkFKdkMwmTdiB_RCkLqnrExNMK-VW2twwvYqNssc1H8r25mJE0L-ZTnpq2xSa88h65tb8IzboCX_C1UHFrYnYx"
+var dogFactEl = document.getElementById("#dog-fact");
+
+// IN PROGRESS - DANIEL
+function addAddressInformationToPage () {
+
+}
 
 function getLocationResults(e) {
     e.preventDefault();
@@ -85,57 +91,59 @@ searchForm.on('submit', getLocationResults);
 // //random dog fact API
 // var dogFactEl = document.querySelector("#dog-fact");
 // var url = "http://dog-api.kinduff.com";
+function fetchDogFact() {
 
-
-
-fetch('http://dog-api.kinduff.com/api/facts?number=5', {
-    mode: 'no-cors'
-}).then(response => {
+var dogFactUrl = 'https://cors-anywhere.herokuapp.com/http://dog-api.kinduff.com/api/facts';
+fetch(dogFactUrl)
+    
+    .then(response => {
     console.log(response);
-    //return response.json(); //nest response and allows us to format it
-}).catch(error => console.log('error', error));
+    return response.json(); 
+    
+    }).then(function(data) {
+    console.log("data", data);
+
+    var dogFactAPIData = data.facts;
+    var dogFactData = `<p>${dogFactAPIData}</p>`;
+
+    $('#dog-fact').append(dogFactData);
 
 
-//then(e=> {
+    })
+.catch(error => console.log('error', error));
+}
 
-//e.data.forEach(item => {
-// dogFactEl.innerHTML += item.
-//})
+$(document).ready(fetchDogFact);
 
 
 //DANIEL ADDING API SCRIPT TO FETCH Random Dog Picture
 //On page load trigger the API
+ function addRandomImage(message) {
+     var imageURL = message;
+     console.log(imageURL);
+     $("#randomDogHeaderImage").attr("src", imageURL);
+ }
 
-//CODE BELOW CAN BE USED TO GENERATE RANDOM PICTURE
-//CURRENTLY SET TO MODIFY HOMEPAGE BANNER IMAGE, WILL
-//NEED TO UPDATE IF WE WANT TO USE ELSEWHERE
-
-// function addRandomImage(message) {
-//     var imageURL = message;
-//     console.log(imageURL);
-//     $("#dogHeaderImage").attr("src", imageURL);
-// }
-
-// function fetchDogPicture() {
-//     var fetchDogPictureEndpoint = "https://dog.ceo/api/breeds/image/random"; 
-//     fetch(fetchDogPictureEndpoint, {
-//     }).then(response => {
-//         return response.json();
-//     }).then(function(data){
-//         console.log(data);
-//         console.log(data.message);
-//         addRandomImage(data.message);
-//     }).catch(error => 
-//         console.log("error", error));
-// }
-function fetchDogPicture() {
-    var fetchDogPictureEndpoint = "https://dog.ceo/api/breeds/image/random";
-    fetch(fetchDogPictureEndpoint, {}).then(response => {
-        console.log(response);
-    }).catch(error =>
-        console.log("error", error));
+ function fetchDogPicture() {
+     var fetchDogPictureEndpoint = "https://dog.ceo/api/breeds/image/random"; 
+     fetch(fetchDogPictureEndpoint, {
+     }).then(response => {
+         return response.json();
+     }).then(function(data){
+         console.log(data);
+         console.log(data.message);
+         addRandomImage(data.message);
+     }).catch(error => 
+         console.log("error", error));
 }
 
-$(document).ready(fetchDogPicture)
+$(document).ready(fetchDogPicture);
 
 //ENDING RANDOM DOG PICTURE SCRIPT
+
+
+function hideStarterElements () {
+    $("#foodSearchParameters").addClass("hideContainer");
+    $("#randomDogHeaderImage").addClass("hideContainer");
+}
+$(document).ready(hideStarterElements);
