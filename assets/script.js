@@ -5,6 +5,9 @@ var searchQueryPlace = $('.form-inputPlace');
 var searchQueryFood = $('.form-inputFood')
 var apiKey = "gJVmTi7vwWY--jKnwBsPJdLiPDsil3tcQzGmNEpsaoBkFKdkMwmTdiB_RCkLqnrExNMK-VW2twwvYqNssc1H8r25mJE0L-ZTnpq2xSa88h65tb8IzboCX_C1UHFrYnYx"
 var dogFactEl = document.getElementById("#dog-fact");
+var dogRun = document.querySelector(".walkingDog");
+let l = document.querySelector("#dogHeaderImage").offsetWidth;
+var margin = 0;
 
 // IN PROGRESS - DANIEL
 function addAddressInformationToPage() {
@@ -67,14 +70,27 @@ function getRestaurant(selectionLocation) {
 
 }
 
-// function selectLocationFunction(e) {
-//     e.preventDefault();
-//     JSON.parse(window.localStorage.getItem("something to specify chosen location"))
 
-//     fetch("https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=" & limit = 10 & categories = parks, beaches & location = " + searchRequest, requestOptions)
+moveDog();
 
-//     }
+function moveDog() {
+    console.log("width", l);
+    setInterval(trotRight, 20);
+    moveDog;
+}
 
+function trotRight() {
+    console.log();
+    if (margin !== l) {
+        dogRun.style.marginLeft = margin + "px";
+        margin += 2;
+        console.log("third reset");
+    } else if (margin == l) {
+        dogRun.style.marginLeft = 0;
+        console.log("reset dog");
+        margin = 0;
+    }
+}
 
 searchForm.on('submit', getLocationResults);
 
