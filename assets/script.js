@@ -50,14 +50,25 @@ function getLocationResults(e) {
                 console.log(localStorageAddressInformation.address);
                 console.log(localStorageAddressInformation.name);
                 console.log(localStorageAddressInformation.picture);
+            
                 var searchResultDataDisplayed = `
-                    <container id="searchResult${i}" class="container">
-                        <span>${localStorageAddressInformation.address}</span>
+                    <div id="searchResults${i}" class="row searchResultDataContainer">
+                        <div class="col">
                         <img id="searchResultImage${i}" class="searchResultImage" src="${localStorageAddressInformation.picture}"/>
-                        <span>${localStorageAddressInformation.name}</span>
-                        <button id="foodOption${i}" type="button" class="btn btn-light">Eat Here</button>
-                    </container>
+                            <div class="row">
+                                <div class="col">
+                                    <span>${localStorageAddressInformation.address}</span>
+                                    <span>${localStorageAddressInformation.name}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 `
+            $("#dogHomepageImageContainer").addClass("hideContainer");
+            $("#addressSearchContainer").addClass("hideContainer");
+            $("#randomDogFactContainer").addClass("hideContainer");
+            $("#addressFoodUserInput").addClass("hideContainer");
+            $("#addressSearchResultsContainer").removeClass("hideContainer");
             $("#displaySearchResults").append(searchResultDataDisplayed);
         }
     }).catch(error => console.log('error', error));
@@ -165,6 +176,7 @@ $(document).ready(fetchDogPicture);
 function hideStarterElements() {
     $("#foodSearchParameters").addClass("hideContainer");
     $("#randomDogHeaderImage").addClass("hideContainer");
+    $("#addressSearchResultsContainer").addClass("hideContainer");
 }
 
 $(document).ready(hideStarterElements);

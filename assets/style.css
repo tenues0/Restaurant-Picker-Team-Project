@@ -228,3 +228,16 @@ CSS Styling to hide elements when not being used.
 .hideContainer {
   display: none;
 }
+
+.searchResultDataContainer {
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchResultImage {
+  width: 100px;
+  height: 100px;
+}
