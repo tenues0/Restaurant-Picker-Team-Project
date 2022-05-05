@@ -28,6 +28,8 @@ function addAddressInformationToPage () {
             </container>
         `
         $("#displaySearchResults").append(searchResultDataDisplayed);
+        // var userSelectionIndex = "foodOption" + i;
+        // $("userSelectionIndex").on("click", )
     } 
 }
 
@@ -62,7 +64,6 @@ function getLocationResults(e) {
                     localStorage.setItem("result" + [i], JSON.stringify(searchResult));
                     i++;
                 })
-                
         }).catch(error => console.log('error', error));
         addAddressInformationToPage();
 }
