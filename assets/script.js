@@ -24,10 +24,10 @@ function addAddressInformationToPage () {
                 <span>${localStorageAddressInformation.address}</span>
                 <img id="searchResultImage${i}" class="searchResultImage" src="${localStorageAddressInformation.picture}"/>
                 <span>${localStorageAddressInformation.name}</span>
+                <button id="foodOption${i}" type="button" class="btn btn-light">Eat Here</button>
             </container>
         `
         $("#displaySearchResults").append(searchResultDataDisplayed);
-        
     } 
 }
 
@@ -62,8 +62,8 @@ function getLocationResults(e) {
                     localStorage.setItem("result" + [i], JSON.stringify(searchResult));
                     i++;
                 })
-                .catch(error => console.log('error', error));
-        })
+                
+        }).catch(error => console.log('error', error));
         addAddressInformationToPage();
 }
 
