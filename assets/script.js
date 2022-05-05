@@ -57,6 +57,7 @@ function getLocationResults(e) {
                 })
                 .catch(error => console.log('error', error));
         })
+        addAddressInformationToPage();
 }
 
 // function selectLocationFunction(e) {
@@ -130,4 +131,4 @@ function hideStarterElements () {
     $("#randomDogHeaderImage").addClass("hideContainer");
 }
 $(document).ready(hideStarterElements);
-$(document).ready(addAddressInformationToPage);
+
