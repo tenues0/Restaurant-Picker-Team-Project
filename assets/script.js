@@ -11,46 +11,6 @@ var margin = 0;
 var selectedQuery = "";
 
 
-function addAddressInformationToPage() {
-    var localStorageAddressInformation = [];
-    for (i = 0; i < 10; i++) {
-        var resultIndex = "result" + [i];
-        localStorageAddressInformation = JSON.parse(window.localStorage.getItem(resultIndex));
-        console.log(localStorageAddressInformation);
-        console.log(localStorageAddressInformation.address);
-        console.log(localStorageAddressInformation.name);
-        console.log(localStorageAddressInformation.picture);
-        var searchResultDataDisplayed = `
-            <container id="searchResult${i}" class="container">
-                <span class="selectedLocation${i}">${localStorageAddressInformation.address}</span>
-                <img id="searchResultImage${i}" class="searchResultImage" src="${localStorageAddressInformation.picture}"/>
-                <span>${localStorageAddressInformation.name}</span>
-            </container>
-        `
-        $("#displaySearchResults").on("click", `#searchResult${i}`, function (e) {
-            e.preventDefault();
-            console.log("clear out results");
-            var selectedQuery = `${localStorageAddressInformation.address}`;
-            searchResultDataDisplayed = "";
-            $("#displaySearchResults").remove(searchResultDataDisplayed);
-
-            // populateRestaurant(selectedQuery);
-
-        })
-        $("#displaySearchResults").append(searchResultDataDisplayed);
-    }
-}
-
-// function populateRestaurant(selectedQuery) {
-//     var foodRequest = searchQueryFood.val();
-//     fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${foodRequest}&limit=10&categories=restaurants&location=${selectedQuery}`)
-
-
-
-// };
-
-// function ();
-
 function getLocationResults(e) {
     e.preventDefault();
 
@@ -74,17 +34,34 @@ function getLocationResults(e) {
             var i = 0;
 
             data.businesses.forEach(function (item) {
-                    const searchResult = {
-                        name: item.name,
-                        address: item.location.address1,
-                        picture: item.image_url,
-                    }
-                    localStorage.setItem("result" + [i], JSON.stringify(searchResult));
-                    i++;
-                })
-                .catch(error => console.log('error', error));
-        })
-    addAddressInformationToPage();
+                var searchResult = {
+                    name: item.name,
+                    address: item.location.address1,
+                    picture: item.image_url,
+                }
+                localStorage.setItem("result" + [i], JSON.stringify(searchResult));
+                i++;
+            })
+        }).then(function addAddressInformationToPage() {
+            var localStorageAddressInformation = [];
+            for (i = 0; i < 10; i++) {
+                var resultIndex = "result" + [i];
+                localStorageAddressInformation = JSON.parse(window.localStorage.getItem(resultIndex));
+                console.log(localStorageAddressInformation);
+                console.log(localStorageAddressInformation.address);
+                console.log(localStorageAddressInformation.name);
+                console.log(localStorageAddressInformation.picture);
+                var searchResultDataDisplayed = `
+                    <container id="searchResult${i}" class="container">
+                        <span>${localStorageAddressInformation.address}</span>
+                        <img id="searchResultImage${i}" class="searchResultImage" src="${localStorageAddressInformation.picture}"/>
+                        <span>${localStorageAddressInformation.name}</span>
+                        <button id="foodOption${i}" type="button" class="btn btn-light">Eat Here</button>
+                    </container>
+                `
+                $("#displaySearchResults").append(searchResultDataDisplayed);
+            }
+        }).catch(error => console.log('error', error));
 }
 
 function getRestaurant(selectionLocation) {
