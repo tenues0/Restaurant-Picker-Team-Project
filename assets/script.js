@@ -8,11 +8,12 @@ var dogFactEl = document.getElementById("#dog-fact");
 var dogRun = document.querySelector(".walkingDog");
 let l = document.querySelector("#dogHeaderImage").offsetWidth;
 var margin = 0;
+var selectedQuery = "";
 
 
 function addAddressInformationToPage() {
     var localStorageAddressInformation = [];
-    for (i = 0; i <= 10; i++) {
+    for (i = 0; i < 10; i++) {
         var resultIndex = "result" + [i];
         localStorageAddressInformation = JSON.parse(window.localStorage.getItem(resultIndex));
         console.log(localStorageAddressInformation);
@@ -21,152 +22,172 @@ function addAddressInformationToPage() {
         console.log(localStorageAddressInformation.picture);
         var searchResultDataDisplayed = `
             <container id="searchResult${i}" class="container">
-                <span>${localStorageAddressInformation.address}</span>
+                <span class="selectedLocation${i}">${localStorageAddressInformation.address}</span>
                 <img id="searchResultImage${i}" class="searchResultImage" src="${localStorageAddressInformation.picture}"/>
                 <span>${localStorageAddressInformation.name}</span>
             </container>
         `
+        $("#displaySearchResults").on("click", `#searchResult${i}`, function (e) {
+            e.preventDefault();
+            console.log("clear out results");
+            var selectedQuery = `${localStorageAddressInformation.address}`;
+            searchResultDataDisplayed = "";
+            $("#displaySearchResults").remove(searchResultDataDisplayed);
+
+            // populateRestaurant(selectedQuery);
+
+        })
         $("#displaySearchResults").append(searchResultDataDisplayed);
     }
+}
 
-    function getLocationResults(e) {
-        e.preventDefault();
-
-        var searchRequest = searchQueryPlace.val()
-        var myHeaders = new Headers();
-        myHeaders.append("Authorization", "Bearer " + apiKey);
-        console.log(searchRequest);
-
-        var requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-            redirect: 'follow'
-        };
-
-        fetch("https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?&limit=10&categories=parks,beaches&location=" + searchRequest, requestOptions)
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (data) {
-                console.log(data);
-                var i = 0;
-
-                data.businesses.forEach(function (item) {
-                        const searchResult = {
-                            name: item.name,
-                            address: item.location.address1,
-                            picture: item.image_url,
-                        }
-                        localStorage.setItem("result" + [i], JSON.stringify(searchResult));
-                        i++;
-                    })
-                    .catch(error => console.log('error', error));
-            })
-        addAddressInformationToPage();
-    }
-
-    function getRestaurant(selectionLocation) {
-        var foodRequest = searchQueryPlace.val()
-        var myHeaders = new Headers();
-        myHeaders.append("Authorization", "Bearer " + apiKey);
-
-        var requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-            redirect: 'follow'
-        };
-
-        fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?=&${foodRequest}limit=10&location=${selectionLocation}`, requestOptions)
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (data) {
-                console.log(data)
-            })
-
-    }
+// function populateRestaurant(selectedQuery) {
+//     var foodRequest = searchQueryFood.val();
+//     fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${foodRequest}&limit=10&categories=restaurants&location=${selectedQuery}`)
 
 
-    moveDog();
 
-    function moveDog() {
-        console.log("width", l);
-        setInterval(trotRight, 20);
-        moveDog;
-    }
+// };
 
-    function trotRight() {
-        console.log();
-        if (margin !== l) {
-            dogRun.style.marginLeft = margin + "px";
-            margin += 2;
-            console.log("third reset");
-        } else if (margin == l) {
-            dogRun.style.marginLeft = 0;
-            console.log("reset dog");
-            margin = 0;
-        }
-    }
+// function ();
 
-    searchForm.on('submit', getLocationResults);
+function getLocationResults(e) {
+    e.preventDefault();
 
+    var searchRequest = searchQueryPlace.val()
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + apiKey);
+    console.log(searchRequest);
 
-    // random dog fact API
-    // var dogFactEl = document.querySelector("#dog-fact");
-    // var url = "http://dog-api.kinduff.com";
-    function fetchDogFact() {
+    var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+    };
 
-        var dogFactUrl = 'https://cors-anywhere.herokuapp.com/http://dog-api.kinduff.com/api/facts';
-        fetch(dogFactUrl)
-
-            .then(response => {
-                console.log(response);
-                return response.json();
-
-            }).then(function (data) {
-                console.log("data", data);
-
-                var dogFactAPIData = data.facts;
-                var dogFactData = `<p>${dogFactAPIData}</p>`;
-
-                $('#dogFactDisplay').append(dogFactData);
-
-
-            })
-            .catch(error => console.log('error', error));
-    }
-
-    $(document).ready(fetchDogFact);
-
-
-    //DANIEL ADDING API SCRIPT TO FETCH Random Dog Picture
-    //On page load trigger the API
-    function addRandomImage(message) {
-        var imageURL = message;
-        console.log(imageURL);
-        $("#randomDogHeaderImage").attr("src", imageURL);
-    }
-
-    function fetchDogPicture() {
-        var fetchDogPictureEndpoint = "https://dog.ceo/api/breeds/image/random";
-        fetch(fetchDogPictureEndpoint, {}).then(response => {
+    fetch("https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?&limit=10&categories=parks,beaches&location=" + searchRequest, requestOptions)
+        .then(function (response) {
             return response.json();
-        }).then(function (data) {
+        })
+        .then(function (data) {
             console.log(data);
-            console.log(data.message);
-            addRandomImage(data.message);
-        }).catch(error =>
-            console.log("error", error));
+            var i = 0;
+
+            data.businesses.forEach(function (item) {
+                    const searchResult = {
+                        name: item.name,
+                        address: item.location.address1,
+                        picture: item.image_url,
+                    }
+                    localStorage.setItem("result" + [i], JSON.stringify(searchResult));
+                    i++;
+                })
+                .catch(error => console.log('error', error));
+        })
+    addAddressInformationToPage();
+}
+
+function getRestaurant(selectionLocation) {
+    var foodRequest = searchQueryPlace.val()
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + apiKey);
+
+    var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+    };
+
+    fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?=&${foodRequest}limit=10&location=${selectionLocation}`, requestOptions)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data)
+        })
+
+}
+
+
+moveDog();
+
+function moveDog() {
+    console.log("width", l);
+    setInterval(trotRight, 20);
+    moveDog;
+}
+
+function trotRight() {
+    console.log();
+    if (margin !== l) {
+        dogRun.style.marginLeft = margin + "px";
+        margin += 2;
+        console.log("third reset");
+    } else if (margin == l) {
+        dogRun.style.marginLeft = 0;
+        console.log("reset dog");
+        margin = 0;
     }
+}
 
-    $(document).ready(fetchDogPicture);
-
-    //ENDING RANDOM DOG PICTURE SCRIPT
+searchForm.on('submit', getLocationResults);
 
 
-    function hideStarterElements() {
-        $("#foodSearchParameters").addClass("hideContainer");
-        $("#randomDogHeaderImage").addClass("hideContainer");
-    }
+// random dog fact API
+// var dogFactEl = document.querySelector("#dog-fact");
+// var url = "http://dog-api.kinduff.com";
+function fetchDogFact() {
 
-    $(document).ready(hideStarterElements);
+    var dogFactUrl = 'https://cors-anywhere.herokuapp.com/http://dog-api.kinduff.com/api/facts';
+    fetch(dogFactUrl)
+
+        .then(response => {
+            console.log(response);
+            return response.json();
+
+        }).then(function (data) {
+            console.log("data", data);
+
+            var dogFactAPIData = data.facts;
+            var dogFactData = `<p>${dogFactAPIData}</p>`;
+
+            $('#dogFactDisplay').append(dogFactData);
+
+        })
+        .catch(error => console.log('error', error));
+}
+
+$(document).ready(fetchDogFact);
+
+
+//DANIEL ADDING API SCRIPT TO FETCH Random Dog Picture
+//On page load trigger the API
+function addRandomImage(message) {
+    var imageURL = message;
+    console.log(imageURL);
+    $("#randomDogHeaderImage").attr("src", imageURL);
+}
+
+function fetchDogPicture() {
+    var fetchDogPictureEndpoint = "https://dog.ceo/api/breeds/image/random";
+    fetch(fetchDogPictureEndpoint, {}).then(response => {
+        return response.json();
+    }).then(function (data) {
+        console.log(data);
+        console.log(data.message);
+        addRandomImage(data.message);
+    }).catch(error =>
+        console.log("error", error));
+}
+
+$(document).ready(fetchDogPicture);
+
+//ENDING RANDOM DOG PICTURE SCRIPT
+
+
+function hideStarterElements() {
+    $("#foodSearchParameters").addClass("hideContainer");
+    $("#randomDogHeaderImage").addClass("hideContainer");
+}
+
+$(document).ready(hideStarterElements);
