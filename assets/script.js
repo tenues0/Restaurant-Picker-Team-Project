@@ -7,7 +7,23 @@ var dogFactEl = document.getElementById("#dog-fact");
 
 // IN PROGRESS - DANIEL
 function addAddressInformationToPage () {
-
+    var localStorageAddressInformation = [];
+    for (i = 0; i <=10; i++) {
+        var resultIndex = "result" + [i];
+       localStorageAddressInformation =  JSON.parse(window.localStorage.getItem(resultIndex));
+        console.log(localStorageAddressInformation);
+        console.log(localStorageAddressInformation.address);
+        console.log(localStorageAddressInformation.name);
+        console.log(localStorageAddressInformation.picture);
+        var searchResultDataDisplayed = `
+            <container id="searchResult${i}" class="container">
+                <span>${localStorageAddressInformation.address}</span>
+                <img id="searchResultImage${i}" class="searchResultImage" src="${localStorageAddressInformation.picture}"/>
+                <span>${localStorageAddressInformation.name}</span>
+            </container>
+        `
+        $("#displaySearchResults").append(searchResultDataDisplayed);
+    }
 }
 
 function getLocationResults(e) {
@@ -114,3 +130,4 @@ function hideStarterElements () {
     $("#randomDogHeaderImage").addClass("hideContainer");
 }
 $(document).ready(hideStarterElements);
+$(document).ready(addAddressInformationToPage);
