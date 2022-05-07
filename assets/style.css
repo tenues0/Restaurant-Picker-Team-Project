@@ -63,6 +63,7 @@ body {
 .animated-title > div.text-top {
   border-bottom: 1vmin solid #000;
   top: 0;
+  z-index: 1;
 }
 .animated-title > div.text-top div {
   animation: showTopText 1s;
@@ -70,18 +71,21 @@ body {
   animation-fill-mode: forwards;
   bottom: 0;
   transform: translate(0, 100%);
+  z-index: 1;
 }
 .animated-title > div.text-top div span:first-child {
-  color: #ff1616;
+  color: #9b7f55;
   font-family: "Montserrat", sans-serif;
   letter-spacing: 5px;
   text-shadow: 2px 2px 5px rgb(67, 74, 170);
   font-style: italic;
   font-weight: 850;
   font-size: 50px;
+  z-index: 1;
 }
 .animated-title > div.text-bottom {
   bottom: 0;
+  z-index: 0;
 }
 
 .animated-title > div.text-bottom div {
@@ -90,6 +94,7 @@ body {
   animation-fill-mode: forwards;
   top: 0;
   transform: translate(0, -100%);
+  z-index: 0;
 }
 
 /*animations for random dog fact*/
@@ -171,7 +176,7 @@ img {
 }
 
 #dogFactDisplay {
-  max-width: 50%;
+  max-width: 80%;
   text-align: center;
   font-weight: bold;
   text-decoration: underline;
@@ -229,7 +234,7 @@ img {
 }
 
 .factContainer {
-  width: 700px;
+  width: 900px;
   background: rgba(210, 180, 140, 0.5);
   border-radius: 0.5rem;
   border: 2px solid black;
@@ -241,7 +246,7 @@ img {
 
 #text-primary {
   font-size: larger;
-  color: white;
+  color: rgb(0, 0, 0);
   margin-bottom: 20px;
 }
 
@@ -360,6 +365,7 @@ CSS Styling to hide elements when not being used.
     /*made change here*/
     border-bottom: 0vmin solid #000;
     top: 0;
+    z-index: 1;
   }
 
   .homepageTitle {
@@ -378,6 +384,7 @@ CSS Styling to hide elements when not being used.
 
   .animated-title > div.text-bottom {
     display: none;
+    z-index: 0;
   }
 
   .walkingDogContainer {
@@ -390,11 +397,11 @@ CSS Styling to hide elements when not being used.
 }
 
 .resultsContainer {
-  z-index: 0;
+  z-index: 1;
   display: flex;
   flex-wrap: wrap;
   position: relative;
-  top: 550px;
+  top: 850px;
   font-size: 40px;
   align-items: center;
   border: 2px solid black;
@@ -434,4 +441,39 @@ CSS Styling to hide elements when not being used.
   display: flex;
   justify-self: end;
   align-self: end;
+}
+
+.mainSearch {
+  z-index: 3;
+}
+
+.stepDirections {
+  font-size: 20px;
+  margin-bottom: 0px;
+  width: fit-content;
+}
+
+#directionsTitle {
+  width: 700px;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+#displayDirections {
+  z-index: 1;
+  flex-wrap: wrap;
+  position: absolute;
+  left: 34%;
+  top: 75%;
+  font-size: 40px;
+  align-items: center;
+  width: 500px;
+}
+
+#secondPartDirections {
+  width: 700px;
+  background: rgba(210, 180, 140, 0.5);
+  border-radius: 0.5rem;
+  border: 2px solid black;
+  text-align: center;
 }
