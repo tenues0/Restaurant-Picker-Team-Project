@@ -92,7 +92,6 @@ function getRestaurant(selectionLocation) {
         .then(function (data) {
             console.log(data)
         })
-
 }
 
 
