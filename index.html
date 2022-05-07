@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--jquery-->
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.js"
-      integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-      crossorigin="anonymous"
+        <!--jquery-->
+        <script
+        src="https://code.jquery.com/jquery-3.2.1.js"
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+        crossorigin="anonymous"
     ></script>
     <!--bootstrap and css-->
     <link
@@ -17,8 +17,8 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-
     <link href="./assets/style.css" rel="stylesheet" />
+    <link href="./assets/mediascreen.css" rel="stylesheet" />
     <title>W.O.O.F. (We Out Of Food!)</title>
   </head>
 
@@ -29,31 +29,28 @@
     </header>
 
   <main>
-
-      <container class="homepageTitle">
-        <div class="animated-title">
-          <div class="text-top">
-            <div>
-              <span>W.O.O.F.🐾</span>
-              <span id="text-middle">"We Out</span>
-            </div>
-          </div>
-          <div class="text-bottom">
-            <div>Of Food!"</div>
+    <!--Title container-->
+    <container class="homepageTitle">
+      <div class="animated-title">
+        <div class="text-top">
+          <div>
+            <span>W.O.O.F.🐾</span>
+            <span id="text-middle">"We Out</span>
           </div>
         </div>
-        <!--<h1 class="title">W.O.O.F. "We Out Of Food!" &#128062;</h1>-->
-      </container>
-
-    
-      
+        <div class="text-bottom">
+          <div>Of Food!"</div>
+        </div>
+      </div>
+    </container>
+    <!--End of title container-->
 
       <!--insert <img> tag for jumbotron placeholder-->
       <container class="bannerImageContainer">
         <div class="jumbotron">
           <img
             id="dogHeaderImage"
-            class="jim img-fluid"
+            class="jim img-fluid dogBannerPhoto"
             src="./assets/jim.jpg"
             alt="Doggy Jumbotron"
           />
@@ -112,6 +109,8 @@
 
       <!--Creating separate form to consume user input, what price tier would they like, rating, etc... 
         Form should only be displayed to the user when the user has selected an address.-->
+      
+      <!--UNUSED CODE MAY COME BACK TO THIS WITH FURTHER REVISIONS-->
       <container id="foodSearchParameters" class="container">
         <container class="container">
           <form>

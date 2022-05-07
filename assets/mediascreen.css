@@ -1,0 +1,76 @@
+/*MEDIA QUERIES*/
+
+@media screen and (min-width: 1200px) {
+
+    .parentFactContainer {
+        top:55%;
+  }
+  
+  .homepageTitle {
+    position: absolute;
+    top: 45%;
+  }
+  
+  .container {
+    top: 10%;
+  }
+  
+  }
+  
+  @media screen and (max-width: 992px) {
+  
+    .container {
+      top: 15%;
+    }
+  
+    .parentFactContainer {
+      top: 55%;
+  }
+  }
+  @media screen and (max-width: 768px) {
+      
+    .animated-title {
+      color: #222;
+      font-family: Roboto, Arial, sans-serif;
+      font-weight: bolder;
+      height: 30vmin;
+      left: 85%; /*change*/
+      position: absolute;
+      top: 50%;
+      bottom: 50%; /*change*/
+      transform: translate(-50%, -50%);
+      width: 100vmin;
+    }
+  
+    .animated-title > div.text-top { /*made change here*/
+      border-bottom: 0vmin solid #000;
+      top: 0;
+    }
+  
+    .homepageTitle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        z-index: 1;
+        top: 10%;
+        right: 10%;
+      }
+  
+    #text-middle {
+      display: none;
+  }
+  
+  .animated-title > div.text-bottom {
+    display: none;
+  }
+  
+  .walkingDogContainer {
+    width: 100%;
+    position: absolute;
+    top: 0%;
+    z-index: 2;
+    display: none; /*change here*/
+  }
+  
+  }
