@@ -20,3 +20,5 @@ The creators of W.O.O.F. are also dog enthusiasts and are constantly looking to 
 Github Repository Link: https://github.com/dcast0607/Restaurant-Picker-Project
 
 Link to the App: https://dcast0607.github.io/Restaurant-Picker-Project/
+
+![image](https://user-images.githubusercontent.com/95945750/167271110-00b87c27-af7f-4441-bca3-560d0127f4d3.png)
